@@ -3,74 +3,306 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio Website</title>
-    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <title>Angshuman Chakrabartty - Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        /* CSS Reset and Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f4f4f9;
+        }
+
+        a {
+            color: #1a73e8;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: auto;
+            overflow: hidden;
+            padding: 20px 0;
+        }
+
+        /* --- New Animation Keyframes --- */
+        @keyframes fadeInSlideUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        /* ---------------------------------- */
+
+        /* Header/Hero Section */
+        #hero {
+            background: #1a73e8;
+            color: #ffffff;
+            padding: 60px 0;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .profile-pic {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid #ffffff;
+            margin-bottom: 20px;
+            /* Apply animation to the profile picture */
+            animation: fadeInSlideUp 1s ease-out 0.2s forwards;
+            opacity: 0; /* Start invisible */
+        }
+
+        /* Apply animation to all immediate children of #hero with staggered delays */
+        #hero h1 {
+            font-size: 3em;
+            margin-bottom: 5px;
+            animation: fadeInSlideUp 1s ease-out 0.6s forwards;
+            opacity: 0;
+        }
+
+        #hero h2 {
+            font-size: 1.5em;
+            font-weight: 300;
+            margin-bottom: 20px;
+            opacity: 0;
+            animation: fadeInSlideUp 1s ease-out 1s forwards;
+        }
+
+        #hero p.bio {
+            max-width: 600px;
+            font-size: 1.1em;
+            margin: 0 auto;
+            opacity: 0;
+            animation: fadeInSlideUp 1s ease-out 1.4s forwards;
+        }
+        /* End of Hero Animation Styling */
+
+        /* Section Styling */
+        section {
+            padding: 40px 0;
+            background: #ffffff;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        section h2 {
+            text-align: center;
+            font-size: 2.2em;
+            color: #1a73e8;
+            margin-bottom: 30px;
+            border-bottom: 3px solid #f4f4f9;
+            display: inline-block;
+            padding-bottom: 5px;
+            width: 100%;
+        }
+
+        /* Skills Section */
+        #skills .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .skill-tag {
+            background: #e6eaff;
+            color: #1a73e8;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-weight: 500;
+            transition: background 0.3s;
+        }
+
+        .skill-tag:hover {
+            background: #c3d4ff;
+        }
+
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .project-card {
+            background: #f9f9f9;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 5px solid #1a73e8;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+        }
+
+        .project-card h3 {
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .project-card p.tech {
+            font-style: italic;
+            color: #555;
+            margin-bottom: 15px;
+            font-size: 0.9em;
+        }
+
+        /* Contact Section */
+        #contact {
+            text-align: center;
+            background: #e6eaff;
+            padding: 40px 0;
+        }
+
+        #contact p {
+            font-size: 1.2em;
+            margin-bottom: 15px;
+        }
+
+        .social-links {
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: inline-block;
+            margin: 0 10px;
+            font-size: 1.1em;
+            color: #333;
+            background: #ffffff;
+            padding: 10px 15px;
+            border-radius: 5px;
+            transition: background 0.3s;
+            text-decoration: none;
+        }
+
+        .social-links a:hover {
+            background: #1a73e8;
+            color: #ffffff;
+            text-decoration: none;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 20px 0;
+            background: #333;
+            color: #f4f4f9;
+            font-size: 0.9em;
+            margin-top: 20px;
+        }
+
+    </style>
 </head>
- <body>
+<body>
 
-    <div id="loader">
-        <div id="wrapperload">
-            <div class="elem">
-                <img src="./imgs/name.png" alt="">
+    <header id="hero">
+        <img src="https://avatars.githubusercontent.com/u/24821864?v=4" alt="Angshuman Chakrabartty Profile Picture" class="profile-pic">
+        <h1>Angshuman Chakrabartty</h1>
+        <h2>Service Desk Analyst | 4 Years Experience</h2>
+        <p class="bio">
+            A dedicated Service Desk professional with 4 years of experience, complemented by a strong technical background as a Programmer, UI/UX Developer, and Network Engineer. Passionate about leveraging technical skills like Java, Python, and web technologies to automate solutions and improve service efficiency.
+        </p>
+    </header>
+
+    <section id="skills" class="container">
+        <h2>Skills & Technologies</h2>
+        <div class="skills-list">
+            <span class="skill-tag">HTML5</span>
+            <span class="skill-tag">CSS3</span>
+            <span class="skill-tag">JavaScript</span>
+            <span class="skill-tag">Python</span>
+            <span class="skill-tag">Java</span>
+            <span class="skill-tag">Visual Basic .NET</span>
+            <span class="skill-tag">Batchfile / Bash</span>
+            <span class="skill-tag">Linux</span>
+            <span class="skill-tag">AWS</span>
+            <span class="skill-tag">Docker</span>
+            <span class="skill-tag">Flutter / Dart</span>
+            <span class="skill-tag">Firebase</span>
+            <span class="skill-tag">MySQL</span>
+            <span class="skill-tag">Git</span>
+            <span class="skill-tag">Arduino (IoT)</span>
+            <span class="skill-tag">Adobe XD (UI/UX)</span>
+        </div>
+    </section>
+
+    <section id="projects" class="container">
+        <h2>Featured Projects</h2>
+        <div class="projects-grid">
+            
+            <div class="project-card">
+                <h3>Arduino-Controller (Home Automation)</h3>
+                <p class="tech">Technology: Java</p>
+                <p>Final Year Project (2019) for "Home Automation with IoT." This project demonstrates skill in application development for controlling IoT devices.</p>
+                <a href="https://github.com/Anxhuman/Arduino-Controller" target="_blank">View on GitHub &rarr;</a>
             </div>
-            <div class="elem">
-                <h3>UI/UX Designer</h3>
+
+            <div class="project-card">
+                <h3>vmware Service Start/Stop Utility</h3>
+                <p class="tech">Technology: Batchfile</p>
+                <p>A utility containing simple Batch files designed to easily start or stop running VMware background services. Practical scripting for IT environment management.</p>
+                <a href="https://github.com/Anxhuman/vmware_Service-Start-Stop" target="_blank">View on GitHub &rarr;</a>
             </div>
-            <div class="elem">
-                <h3>loves to help brands.</h3>
+
+            <div class="project-card">
+                <h3>Ironman Stane PC Security</h3>
+                <p class="tech">Technology: Visual Basic .NET</p>
+                <p>An older project created to replicate the unique Obadiah Stane's PC Screen Lock interface from the movie "Ironman (2008)".</p>
+                <a href="https://github.com/Anxhuman/Ironman_Stane_PC-Security" target="_blank">View on GitHub &rarr;</a>
             </div>
-            <div class="elem">
-                <img src="./imgs/name.png" alt="">
+
+            <div class="project-card">
+                <h3>New Website Design</h3>
+                <p class="tech">Technology: HTML, CSS</p>
+                <p>A cool, simple website design featuring a transparent template. Showcases skills in front-end development and UI design.</p>
+                <a href="https://github.com/Anxhuman/New_Website_Design" target="_blank">View on GitHub &rarr;</a>
+            </div>
+            
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="container">
+            <h2>Get In Touch</h2>
+            <p>I'm always open to discussing new opportunities or collaborations.</p>
+            <p>Email: <a href="mailto:angshumanchakrabartty@gmail.com">angshumanchakrabartty@gmail.com</a></p>
+            
+            <div class="social-links">
+                <a href="https://www.linkedin.com/in/angshuman-chakrabartty-47536462" target="_blank">LinkedIn</a>
+                <a href="https://github.com/Anxhuman" target="_blank">GitHub</a>
+                <a href="https://twitter.com/ankshuman" target="_blank">X (Twitter)</a>
+                <a href="https://www.facebook.com/angshuman.chakrabartty" target="_blank">Facebook</a>
             </div>
         </div>
-    </div>
+    </section>
 
-    <div id="bg">
-        <nav>
-            <img class="navitem" src="./imgs/logo.png" alt="">
-            <div id="links">
-                <a class="navitem" href="#">Home</a>
-                <a class="navitem" href="#">Contact</a>
-                <i class="navitem ri-search-line"></i>
-                <i id="menu" class="navitem ri-menu-2-line"></i>
-            </div>
-        </nav>
-        <div id="sections">
-            <img class="leftitem" id="splash" src="./imgs/rightSplash.png" alt="">
-            <div id="left">
-                <div id="smalline"></div>
-                <h4 class="leftitem">Hello, I am 👋</h4>
-                <img class="leftitem" src="./imgs/name.png" alt="">
-                <h5 class="leftitem">a designer from <span id="lblue">ukraine.</span></h5>
-                <div class="leftitem" id="playbtn">
-                    <img src="./imgs/playButton.png" alt="">
-                    <h5>see my <span class="bold">work profile</span></h5>
-                </div>
-                <div class="leftitem" id="contact">
-                    <h3>Contact me</h3>
-                    <h6>Email : <span>someone@email.com</span></h6>
-                    <h6>Contact Number: <span>+91-123456789</span></h6>
-                </div>
-            </div>
-            <div id="right">
-                <img src="./imgs/mainImage.png" alt="">
-            </div>
-        </div>
-    </div>
+    <footer>
+        &copy; 2025 Angshuman Chakrabartty. Built with HTML & CSS.
+    </footer>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js" integrity="sha512-IQLehpLoVS4fNzl7IfH8Iowfm5+RiMGtHykgZJl9AWMgqx0AmJ6cRWcB+GaGVtIsnC4voMfm8f2vwtY+6oPjpQ==" crossorigin="anonymous"></script>
-    <script src="script.js"></script>
-
-    <script>
-        var menu = document.querySelector('#menu');
-        var bg = document.querySelector('#bg');
-
-        menu.addEventListener('click', function(){
-            bg.style.transform = 'scale(.8)';
-            bg.style.borderRadius = '10px';
-            bg.style.boxShadow = '0 150px 45px -100px rgba(0,0,0,0.2)';
-        })
-    </script>
 </body>
 </html>
